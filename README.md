@@ -1,12 +1,46 @@
-# React + Vite
+# Task & Project Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern task & project management web app built with **React** and **Supabase**.
+Create projects, manage tasks, and stay on track with realtime updates, and sorting.
 
-Currently, two official plugins are available:
+## Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Dashboard](Preview/Dashboard.png)
+![Login Page](Preview/Login.png)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Authentication**:
+
+  - Users can store their projects and tasks in the cloud
+  - Users can only view and modify their own projects and tasks
+
+- **Projects**:
+
+  - Create, edit, and delete projects
+  - Custom colors for project cards
+  - Priority and due dates support
+  - Realtime sync with supabase
+
+- **Tasks**:
+
+  - Create, edit, and delete tasks
+  - Priority and due dates support
+  - Realtime sync with supabase
+
+- **Sorting**:
+
+  - Sort tasks by date created, priority, and due date
+
+- **UI/UX**:
+  - Responsive grid based layout for project cards
+  - Scrollabe task lists inside project cards.
+  - Custom modals for creating, editing, and viewing projects and tasks
+  - Light and dark mode support
+
+## Tech Stack
+
+- **Frontend**: React + Vite
+- **Backend**: Supabase DB (Postgres + Auth + Realtime)
+- **Styling**: TailwindCSS
+- **Icons**: Lucide React
