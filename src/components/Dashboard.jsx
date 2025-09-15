@@ -107,6 +107,7 @@ const Dashboard = () => {
             <ProjectModal
               onClose={toggleCreateProjectModal}
               onCreated={handleProjectUpdated}
+              setProjects={setProjects}
             />
           )}
           {createTaskModal && <TaskModal onClose={toggleCreateTaskModal} />}
