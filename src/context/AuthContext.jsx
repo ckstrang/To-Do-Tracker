@@ -32,7 +32,7 @@ export const AuthContextProvider = ({ children }) => {
         return { success: false, error: error.message };
       }
 
-      console.log("Sign-in success:", data);
+      // console.log("Sign-in success:", data);
       return { success: true, data };
     } catch (error) {
       console.error("Unexpected error during sign-in:", err.message);

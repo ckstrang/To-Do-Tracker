@@ -104,7 +104,10 @@ const Dashboard = () => {
           <Button onClick={toggleCreateTaskModal}>Create Task</Button>
 
           {createProjectModal && (
-            <ProjectModal onClose={toggleCreateProjectModal} />
+            <ProjectModal
+              onClose={toggleCreateProjectModal}
+              onCreated={handleProjectUpdated}
+            />
           )}
           {createTaskModal && <TaskModal onClose={toggleCreateTaskModal} />}
         </div>

@@ -3,7 +3,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { supabase } from "../../supabaseClient";
 import { Button, Input } from "../UI";
 
-const ProjectModal = ({ onClose }) => {
+const ProjectModal = ({ onClose, onCreated }) => {
   const { session } = UserAuth();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -42,6 +42,7 @@ const ProjectModal = ({ onClose }) => {
     const project = await createProject();
     if (project) {
       // console.log("Created project:", project);
+      onCreated?.();
       onClose();
     }
   };
