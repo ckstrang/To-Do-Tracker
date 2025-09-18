@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
     });
 
     if (error) {
-      console.error("Error signing up: ", error);
+      // console.error("Error signing up: ", error);
       return { success: false, error };
     }
 
@@ -35,11 +35,21 @@ export const AuthContextProvider = ({ children }) => {
       // console.log("Sign-in success:", data);
       return { success: true, data };
     } catch (error) {
-      console.error("Unexpected error during sign-in:", err.message);
+      // console.error("Unexpected error during sign-in:", err.message);
       return {
         success: false,
         error: "An unexpected error occurred. Please try again.",
       };
+    }
+  };
+
+  const signInAnonymously = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInAnonymously();
+      if (error) return { success: false, error: error.message };
+      return { success: true, data };
+    } catch (err) {
+      return { success: false, error: "Unexpected error. Please try again." };
     }
   };
 
@@ -56,12 +66,14 @@ export const AuthContextProvider = ({ children }) => {
   async function signOut() {
     const { error } = await supabase.auth.signOut();
     if (error) {
-      console.error("Error signing out:", error);
+      // console.error("Error signing out:", error);
     }
   }
 
   return (
-    <AuthContext.Provider value={{ signUpUser, signInUser, session, signOut }}>
+    <AuthContext.Provider
+      value={{ signUpUser, signInUser, signInAnonymously, session, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   );

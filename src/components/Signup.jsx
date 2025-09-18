@@ -9,7 +9,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
 
-  const { session, signUpUser } = UserAuth();
+  const { session, signUpUser, signInAnonymously } = UserAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -63,6 +63,22 @@ const Signup = () => {
           />
           <Button type="submit" disabled={loading}>
             Sign Up
+          </Button>
+          <Button
+            type="button"
+            disabled={loading}
+            onClick={async () => {
+              setLoading(true);
+              const result = await signInAnonymously();
+              setLoading(false);
+              if (result.success) {
+                navigate("/dashboard");
+              } else {
+                setError(result.error);
+              }
+            }}
+          >
+            Continue as Guest
           </Button>
           {error && <p>{error}</p>}
         </div>

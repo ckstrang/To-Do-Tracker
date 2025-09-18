@@ -9,7 +9,7 @@ const SignIn = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState("");
 
-  const { session, signInUser } = UserAuth();
+  const { session, signInUser, signInAnonymously } = UserAuth();
   const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
@@ -43,7 +43,7 @@ const SignIn = () => {
         <p className="mb-6 text-gray-600 dark:text-gray-400">
           Don't have an account?{" "}
           <Link
-            to="/signin"
+            to="/signup"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             Sign up here!
@@ -63,6 +63,22 @@ const SignIn = () => {
           />
           <Button type="submit" disabled={loading}>
             Sign In
+          </Button>
+          <Button
+            type="button"
+            disabled={loading}
+            onClick={async () => {
+              setLoading(true);
+              const result = await signInAnonymously();
+              setLoading(false);
+              if (result.success) {
+                navigate("/dashboard");
+              } else {
+                setError(result.error);
+              }
+            }}
+          >
+            Continue as Guest
           </Button>
           {error && <p>{error}</p>}
         </div>
