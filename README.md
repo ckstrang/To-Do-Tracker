@@ -34,7 +34,7 @@ Create projects, manage tasks, and stay on track with realtime updates, and sort
 
 - **UI/UX**:
   - Responsive grid based layout for project cards
-  - Scrollable task lists inside project cards.
+  - Scrollable task lists inside project cards
   - Custom modals for creating, editing, and viewing projects and tasks
   - Light and dark mode support
 
