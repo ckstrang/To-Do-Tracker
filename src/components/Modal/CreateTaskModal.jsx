@@ -5,6 +5,7 @@ import { Button, Input } from "../UI";
 
 const TaskModal = ({ onClose }) => {
   const { session } = UserAuth();
+  const [loading, setLoading] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [due_date, setDueDate] = useState("");
@@ -60,7 +61,9 @@ const TaskModal = ({ onClose }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const task = await createTask();
+    setLoading(false);
     if (task) {
       // console.log("Created task:", task);
       onClose();
@@ -116,7 +119,9 @@ const TaskModal = ({ onClose }) => {
             <Button type="button" variant="secondary" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit">Save Task</Button>
+            <Button type="submit" disabled={loading}>
+              Create Task
+            </Button>
           </div>
         </form>
       </div>

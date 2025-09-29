@@ -5,6 +5,7 @@ import { Button, Input } from "../UI";
 
 const ProjectModal = ({ onClose, onCreated, setProjects }) => {
   const { session } = UserAuth();
+  const [loading, setLoading] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [due_date, setDueDate] = useState("");
@@ -38,6 +39,7 @@ const ProjectModal = ({ onClose, onCreated, setProjects }) => {
   }
 
   const onSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const project = await createProject();
     if (project) {
@@ -46,6 +48,7 @@ const ProjectModal = ({ onClose, onCreated, setProjects }) => {
       onCreated?.();
       onClose();
     }
+    setLoading(false);
   };
 
   return (
@@ -97,7 +100,9 @@ const ProjectModal = ({ onClose, onCreated, setProjects }) => {
             <Button type="button" variant="secondary" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit">Save Project</Button>
+            <Button type="submit" disabled={loading}>
+              Create Project
+            </Button>
           </div>
         </form>
       </div>
